@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		87680E162B2D93D200CF30F7 /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87680E152B2D93D200CF30F7 /* TodoApp.swift */; };
-		87680E182B2D93D200CF30F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87680E172B2D93D200CF30F7 /* ContentView.swift */; };
 		87680E1A2B2D93D400CF30F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87680E192B2D93D400CF30F7 /* Assets.xcassets */; };
 		87680E1D2B2D93D400CF30F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87680E1C2B2D93D400CF30F7 /* Preview Assets.xcassets */; };
+		87680E252B2D94DC00CF30F7 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87680E242B2D94DC00CF30F7 /* ListView.swift */; };
+		879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70142B2D97DD005F5CB7 /* ListData.swift */; };
+		879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70162B2DE08B005F5CB7 /* ListRowView.swift */; };
+		879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		87680E122B2D93D200CF30F7 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87680E152B2D93D200CF30F7 /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
-		87680E172B2D93D200CF30F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87680E192B2D93D400CF30F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87680E1C2B2D93D400CF30F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		87680E242B2D94DC00CF30F7 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		879C70142B2D97DD005F5CB7 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
+		879C70162B2DE08B005F5CB7 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				87680E152B2D93D200CF30F7 /* TodoApp.swift */,
-				87680E172B2D93D200CF30F7 /* ContentView.swift */,
+				879C70142B2D97DD005F5CB7 /* ListData.swift */,
+				87680E232B2D94BD00CF30F7 /* Views */,
 				87680E192B2D93D400CF30F7 /* Assets.xcassets */,
 				87680E1B2B2D93D400CF30F7 /* Preview Content */,
 			);
@@ -65,6 +72,16 @@
 				87680E1C2B2D93D400CF30F7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		87680E232B2D94BD00CF30F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				87680E242B2D94DC00CF30F7 /* ListView.swift */,
+				879C70162B2DE08B005F5CB7 /* ListRowView.swift */,
+				879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87680E182B2D93D200CF30F7 /* ContentView.swift in Sources */,
+				879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */,
 				87680E162B2D93D200CF30F7 /* TodoApp.swift in Sources */,
+				87680E252B2D94DC00CF30F7 /* ListView.swift in Sources */,
+				879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */,
+				879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
