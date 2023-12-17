@@ -19,7 +19,9 @@ struct ListItem: Identifiable, Codable {
 
 //数据源
 class ListData: ObservableObject {
+    
     @Published var lists: [ListItem] = []
+    @Published var collectLists: [ListItem] = []
     
     //1、 获取沙盒地址
     static let sandBoxURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -31,16 +33,15 @@ class ListData: ObservableObject {
     
     init() {
         lists = getList()
-        print("11")
     }
     
     //获取数据
     func getList() -> [ListItem] {
         var result: [ListItem] = []
         
-        if FileManager.default.fileExists(atPath: listsURL.path) {
-            if let data = try? Data(contentsOf: listsURL) {
-                result = try! JSONDecoder().decode([ListItem].self, from: data)
+        if FileManager.default.fileExists(atPath: listsURL.path) {  //判断沙盒中是否存在listsURL
+            if let data = try? Data(contentsOf: listsURL) {  //提取listsURL中的数据
+                result = try! JSONDecoder().decode([ListItem].self, from: data)  //将数据解码为[ListItem]类型
             }
         }
         

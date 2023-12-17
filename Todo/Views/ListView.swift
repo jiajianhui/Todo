@@ -17,10 +17,19 @@ struct ListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(listData.lists) { item in
-                    ListRowView(listItem: item)
+                ForEach(listData.lists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
+                    ListRowView(listItem: listData.lists[index])
+                        .swipeActions(allowsFullSwipe: true) {
+                            Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
+                                delete(at: index)
+                            }
+                            
+                            Button("收藏") {
+                                
+                            }
+                            .tint(.orange)
+                        }
                 }
-                .onDelete(perform: delete)
             }
             .navigationTitle("TodoList")
             .toolbar {
@@ -38,8 +47,8 @@ struct ListView: View {
     }
     
     //删除函数
-    private func delete(atOffsets: IndexSet) {
-        listData.lists.remove(atOffsets: atOffsets)
+    private func delete(at index: Int) {
+        listData.lists.remove(at: index)
         listData.saveList()
     }
 }

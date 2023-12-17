@@ -19,6 +19,7 @@ struct ListRowView: View {
                 .fontWeight(.semibold)
             Text(listItem.content)
                 .foregroundColor(.secondary)
+                .lineLimit(1)
         }
     }
 }
