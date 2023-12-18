@@ -11,7 +11,6 @@ struct ListRowView: View {
     
     var listItem: ListItem
     
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(listItem.title)
@@ -19,13 +18,21 @@ struct ListRowView: View {
                 .fontWeight(.semibold)
             Text(listItem.content)
                 .foregroundColor(.secondary)
-                .lineLimit(1)
+        }
+        .lineLimit(1)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .trailing) {
+            Image(systemName: "star.fill")
+                .foregroundColor(.orange)
+                .opacity(listItem.collected ? 1 : 0)
         }
     }
 }
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView(listItem: ListItem(id: UUID(), title: "title", content: "content"))
+        ListRowView(
+            listItem: ListItem(id: UUID(), title: "title", content: "content")
+        )
     }
 }

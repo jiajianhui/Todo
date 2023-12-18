@@ -24,14 +24,14 @@ struct ListView: View {
                                 delete(at: index)
                             }
                             
-                            Button("收藏") {
-                                
+                            Button(listData.lists[index].collected ? "取消收藏" : "收藏") {
+                                collect(at: index)
                             }
                             .tint(.orange)
                         }
                 }
             }
-            .navigationTitle("TodoList")
+            .navigationTitle("待办列表")
             .toolbar {
                 Button {
                     showSheet.toggle()
@@ -49,6 +49,12 @@ struct ListView: View {
     //删除函数
     private func delete(at index: Int) {
         listData.lists.remove(at: index)
+        listData.saveList()
+    }
+    
+    //收藏函数
+    private func collect(at index: Int) {
+        listData.lists[index].collected.toggle()
         listData.saveList()
     }
 }

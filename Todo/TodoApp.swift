@@ -11,7 +11,20 @@ import SwiftUI
 struct TodoApp: App {
     var body: some Scene {
         WindowGroup {
-            ListView()
+            TabView {
+                ListView()
+                    .tabItem {
+                        Image(systemName: "list.bullet.rectangle.portrait.fill")
+                        Text("待办")
+                    }
+                    
+                CollectView()
+                    .tabItem {
+                        Image(systemName: "star.fill")
+                        Text("收藏")
+                    }
+            }
+            
         }
     }
 }
