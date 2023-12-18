@@ -9,26 +9,32 @@ import SwiftUI
 
 struct ListView: View {
     
-    //初始化数据源
-    @StateObject var listData = ListData()
+    //接受数据源
+    @EnvironmentObject var listData: ListData
     
     @State var showSheet = false
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(listData.lists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
-                    ListRowView(listItem: listData.lists[index])
-                        .swipeActions(allowsFullSwipe: true) {
-                            Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
-                                delete(at: index)
-                            }
-                            
-                            Button(listData.lists[index].collected ? "取消收藏" : "收藏") {
-                                collect(at: index)
-                            }
-                            .tint(.orange)
+            VStack {
+                if !listData.lists.isEmpty {
+                    List {
+                        ForEach(listData.lists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
+                            ListRowView(listItem: listData.lists[index])
+                                .swipeActions(allowsFullSwipe: true) {
+                                    Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
+                                        delete(at: index)
+                                    }
+                                    
+                                    Button(listData.lists[index].collected ? "取消收藏" : "收藏") {
+                                        collect(at: index)
+                                    }
+                                    .tint(.orange)
+                                }
                         }
+                    }
+                } else {
+                    NoListView(title: "赶快添加你的第一个想法", image: "wand.and.stars")
                 }
             }
             .navigationTitle("待办列表")
@@ -37,7 +43,7 @@ struct ListView: View {
                     UIImpactFeedbackGenerator.impact(style: .light)
                     showSheet.toggle()
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "square.and.pencil")
                         .fontWeight(.medium)
                 }
 
@@ -64,5 +70,6 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView()
+            .environmentObject(ListData())
     }
 }

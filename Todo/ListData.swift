@@ -22,7 +22,6 @@ struct ListItem: Identifiable, Codable {
 class ListData: ObservableObject {
     
     @Published var lists: [ListItem] = []
-    @Published var collectLists: [ListItem] = []
     
     //1、 获取沙盒地址
     static let sandBoxURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -51,7 +50,9 @@ class ListData: ObservableObject {
     
     //存储数据
     func saveList() {
-        let data = try? JSONEncoder().encode(self.lists)  //将数据编码为json格式
-        try? data?.write(to: self.listsURL)  //将数据写入文件
+        DispatchQueue.global(qos: .userInitiated).async {
+            let data = try? JSONEncoder().encode(self.lists)  //将数据编码为json格式
+            try? data?.write(to: self.listsURL)  //将数据写入文件
+        }
     }
 }
