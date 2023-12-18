@@ -12,8 +12,6 @@ struct CollectedView: View {
     //接受数据源
     @EnvironmentObject var listData: ListData
     
-    private var collectedLists: [ListItem] = []
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -23,6 +21,7 @@ struct CollectedView: View {
                             ListRowView(listItem: item)
                         }
                     }
+                    .listStyle(.plain)
                 } else {
                     NoListView(title: "暂无收藏的内容", image: "star.fill")
                 }

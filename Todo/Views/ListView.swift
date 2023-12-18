@@ -20,33 +20,40 @@ struct ListView: View {
                 if !listData.lists.isEmpty {
                     List {
                         ForEach(listData.lists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
-                            ListRowView(listItem: listData.lists[index])
-                                .swipeActions(allowsFullSwipe: true) {
-                                    Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
-                                        delete(at: index)
+                            
+                            NavigationLink {
+                                ListDetailView(listItem: $listData.lists[index])
+                            } label: {
+                                ListRowView(listItem: listData.lists[index])
+                                    .swipeActions(allowsFullSwipe: true) {
+                                        Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
+                                            delete(at: index)
+                                        }
+                                        
+                                        Button(listData.lists[index].collected ? "取消收藏" : "收藏") {
+                                            collect(at: index)
+                                        }
+                                        .tint(.orange)
                                     }
-                                    
-                                    Button(listData.lists[index].collected ? "取消收藏" : "收藏") {
-                                        collect(at: index)
-                                    }
-                                    .tint(.orange)
-                                }
+                            }
                         }
                     }
+                    .listStyle(.plain)
                 } else {
                     NoListView(title: "赶快添加你的第一个想法", image: "wand.and.stars")
                 }
             }
             .navigationTitle("待办列表")
             .toolbar {
-                Button {
-                    UIImpactFeedbackGenerator.impact(style: .light)
-                    showSheet.toggle()
-                } label: {
-                    Image(systemName: "square.and.pencil")
-                        .fontWeight(.medium)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        UIImpactFeedbackGenerator.impact(style: .light)
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .fontWeight(.medium)
+                    }
                 }
-
             }
             .sheet(isPresented: $showSheet) {
                 AddTodoSheetView(listData: listData)
@@ -55,13 +62,13 @@ struct ListView: View {
     }
     
     //删除函数
-    private func delete(at index: Int) {
+    func delete(at index: Int) {
         listData.lists.remove(at: index)
         listData.saveList()
     }
     
     //收藏函数
-    private func collect(at index: Int) {
+    func collect(at index: Int) {
         listData.lists[index].collected.toggle()
         listData.saveList()
     }
