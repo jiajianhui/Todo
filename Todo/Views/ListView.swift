@@ -34,9 +34,11 @@ struct ListView: View {
             .navigationTitle("待办列表")
             .toolbar {
                 Button {
+                    UIImpactFeedbackGenerator.impact(style: .light)
                     showSheet.toggle()
                 } label: {
                     Image(systemName: "plus")
+                        .fontWeight(.medium)
                 }
 
             }

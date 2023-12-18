@@ -31,17 +31,20 @@ struct AddTodoSheetView: View {
                         .background(Color(uiColor: .systemGray6).cornerRadius(12))
                 }
             }
-            .navigationTitle("Add Todo")
+            .navigationTitle("添加待办事项")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    
+                    Button("取消") {
+                        dismiss()
+                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         addTodo()
                     } label: {
                         Text("添加")
+                            .fontWeight(.medium)
                     }
                 }
             }
@@ -52,6 +55,7 @@ struct AddTodoSheetView: View {
     
     //添加todo函数
     func addTodo() {
+        UIImpactFeedbackGenerator.impact(style: .light)
         let id = UUID()
         let newTodo = ListItem(
             id: id,
