@@ -9,28 +9,35 @@ import SwiftUI
 
 struct ListView: View {
     
-    //接受数据源
-    @EnvironmentObject var listData: ListData
+    //初始化数据源
+    @StateObject var listData = ListData()
     
     @State var showSheet = false
+    
+    //picker
+    @State var pickerValue = "全部"
+    var pickerTitle = ["全部", "收藏"]
+    
+    @State var filterLists: [ListItem] = []
+    
     
     var body: some View {
         NavigationView {
             VStack {
                 if !listData.lists.isEmpty {
                     List {
-                        ForEach(listData.lists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
+                        ForEach(filterLists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
                             
                             NavigationLink {
-                                ListDetailView(listItem: $listData.lists[index])
+                                ListDetailView(listItem: $filterLists[index])
                             } label: {
-                                ListRowView(listItem: listData.lists[index])
+                                ListRowView(listItem: filterLists[index])
                                     .swipeActions(allowsFullSwipe: true) {
                                         Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
                                             delete(at: index)
                                         }
                                         
-                                        Button(listData.lists[index].collected ? "取消收藏" : "收藏") {
+                                        Button(filterLists[index].collected ? "取消收藏" : "收藏") {
                                             collect(at: index)
                                         }
                                         .tint(.orange)
@@ -45,6 +52,18 @@ struct ListView: View {
             }
             .navigationTitle("待办列表")
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Picker("picker", selection: $pickerValue) {
+                        ForEach(pickerTitle, id: \.self) { title in
+                            Text(title)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(width: 160)
+                    .onChange(of: pickerValue) { _ in
+                        updateLists()
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         UIImpactFeedbackGenerator.impact(style: .light)
@@ -59,6 +78,14 @@ struct ListView: View {
                 AddTodoSheetView(listData: listData)
             }
         }
+        
+        //及时的数据更新
+        .onAppear {
+            updateLists()
+        }
+        .onChange(of: listData.lists) { _ in
+            updateLists()
+        }
     }
     
     //删除函数
@@ -72,11 +99,19 @@ struct ListView: View {
         listData.lists[index].collected.toggle()
         listData.saveList()
     }
+    
+    //数据筛选
+    func updateLists() {
+        if pickerValue == "全部" {
+            filterLists = listData.lists
+        } else {
+            filterLists = listData.lists.filter{$0.collected}
+        }
+    }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView()
-            .environmentObject(ListData())
     }
 }

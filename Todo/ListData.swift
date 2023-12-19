@@ -10,7 +10,7 @@ import Foundation
 
 
 //模型
-struct ListItem: Identifiable, Codable {
+struct ListItem: Identifiable, Codable, Equatable {
     var id: UUID
     var title: String
     var content: String
