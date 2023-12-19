@@ -52,7 +52,7 @@ struct ListView: View {
                     NoListView(title: "赶快添加你的第一个想法", image: "wand.and.stars")
                 }
             }
-            .navigationTitle("待办列表")
+            .navigationTitle("灵感列表")
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Picker("picker", selection: $pickerValue) {

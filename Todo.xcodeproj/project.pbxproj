@@ -14,6 +14,11 @@
 		8778FEDB2B2FF2D000B9C08C /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEDA2B2FF2D000B9C08C /* Haptic.swift */; };
 		8778FEDD2B30237200B9C08C /* NoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEDC2B30237200B9C08C /* NoListView.swift */; };
 		8778FEE02B3077DB00B9C08C /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEDF2B3077DB00B9C08C /* ListDetailView.swift */; };
+		8778FEE22B316CEE00B9C08C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEE12B316CEE00B9C08C /* SettingView.swift */; };
+		8778FEE42B316F2E00B9C08C /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEE32B316F2E00B9C08C /* SettingRowView.swift */; };
+		8778FEE72B3183BC00B9C08C /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 8778FEE62B3183BC00B9C08C /* BetterSafariView */; };
+		8778FEEA2B31A48700B9C08C /* AboutMeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEE92B31A48700B9C08C /* AboutMeSheetView.swift */; };
+		8778FEEE2B31A4C000B9C08C /* DesignSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEED2B31A4C000B9C08C /* DesignSheetView.swift */; };
 		879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70142B2D97DD005F5CB7 /* ListData.swift */; };
 		879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70162B2DE08B005F5CB7 /* ListRowView.swift */; };
 		879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */; };
@@ -28,6 +33,10 @@
 		8778FEDA2B2FF2D000B9C08C /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		8778FEDC2B30237200B9C08C /* NoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoListView.swift; sourceTree = "<group>"; };
 		8778FEDF2B3077DB00B9C08C /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
+		8778FEE12B316CEE00B9C08C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		8778FEE32B316F2E00B9C08C /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
+		8778FEE92B31A48700B9C08C /* AboutMeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeSheetView.swift; sourceTree = "<group>"; };
+		8778FEED2B31A4C000B9C08C /* DesignSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSheetView.swift; sourceTree = "<group>"; };
 		879C70142B2D97DD005F5CB7 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
 		879C70162B2DE08B005F5CB7 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheetView.swift; sourceTree = "<group>"; };
@@ -38,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8778FEE72B3183BC00B9C08C /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				87680E242B2D94DC00CF30F7 /* ListView.swift */,
-				879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */,
+				8778FEE12B316CEE00B9C08C /* SettingView.swift */,
 				8778FEDF2B3077DB00B9C08C /* ListDetailView.swift */,
+				8778FEE82B31A03D00B9C08C /* SheetViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,8 +116,19 @@
 			children = (
 				8778FEDC2B30237200B9C08C /* NoListView.swift */,
 				879C70162B2DE08B005F5CB7 /* ListRowView.swift */,
+				8778FEE32B316F2E00B9C08C /* SettingRowView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		8778FEE82B31A03D00B9C08C /* SheetViews */ = {
+			isa = PBXGroup;
+			children = (
+				879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */,
+				8778FEE92B31A48700B9C08C /* AboutMeSheetView.swift */,
+				8778FEED2B31A4C000B9C08C /* DesignSheetView.swift */,
+			);
+			path = SheetViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +147,9 @@
 			dependencies = (
 			);
 			name = Todo;
+			packageProductDependencies = (
+				8778FEE62B3183BC00B9C08C /* BetterSafariView */,
+			);
 			productName = Todo;
 			productReference = 87680E122B2D93D200CF30F7 /* Todo.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +178,9 @@
 				Base,
 			);
 			mainGroup = 87680E092B2D93D100CF30F7;
+			packageReferences = (
+				8778FEE52B3183BC00B9C08C /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+			);
 			productRefGroup = 87680E132B2D93D200CF30F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -182,6 +210,10 @@
 				879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */,
 				87680E162B2D93D200CF30F7 /* TodoApp.swift in Sources */,
 				87680E252B2D94DC00CF30F7 /* ListView.swift in Sources */,
+				8778FEE22B316CEE00B9C08C /* SettingView.swift in Sources */,
+				8778FEEA2B31A48700B9C08C /* AboutMeSheetView.swift in Sources */,
+				8778FEE42B316F2E00B9C08C /* SettingRowView.swift in Sources */,
+				8778FEEE2B31A4C000B9C08C /* DesignSheetView.swift in Sources */,
 				879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */,
 				879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */,
 				8778FEE02B3077DB00B9C08C /* ListDetailView.swift in Sources */,
@@ -318,11 +350,12 @@
 				DEVELOPMENT_TEAM = ML2CJSB2YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Spark;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -347,11 +380,12 @@
 				DEVELOPMENT_TEAM = ML2CJSB2YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Spark;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8778FEE52B3183BC00B9C08C /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8778FEE62B3183BC00B9C08C /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8778FEE52B3183BC00B9C08C /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87680E0A2B2D93D100CF30F7 /* Project object */;
 }
