@@ -24,7 +24,7 @@ struct ListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if !listData.lists.isEmpty {
+                if !filterLists.isEmpty {
                     List {
                         ForEach(filterLists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
                             
@@ -46,6 +46,8 @@ struct ListView: View {
                         }
                     }
                     .listStyle(.plain)
+                } else if pickerValue == "收藏" && filterLists.filter{$0.collected}.isEmpty {
+                    NoListView(title: "暂无收藏内容", image: "star")
                 } else {
                     NoListView(title: "赶快添加你的第一个想法", image: "wand.and.stars")
                 }
@@ -60,6 +62,8 @@ struct ListView: View {
                     }
                     .pickerStyle(.segmented)
                     .frame(width: 160)
+                    
+                    //监测picker选项的变化
                     .onChange(of: pickerValue) { _ in
                         updateLists()
                     }
