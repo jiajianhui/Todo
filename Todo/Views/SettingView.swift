@@ -15,6 +15,9 @@ struct SettingView: View {
     @State var showDesignSheet = false
     @State var showAboutMeSheet = false
     
+    //与父级的isToggle相绑定
+    @Binding var isToggle: Bool
+    
     var body: some View {
         NavigationView {
             List {
@@ -39,6 +42,27 @@ struct SettingView: View {
                 } header: {
                     Text("关于")
                 }
+                
+                Section {
+                    HStack {
+                        Toggle(isOn: $isToggle) {
+                            HStack {
+                                Image(systemName: "key.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .opacity(0.3)
+                                Text("FaceID验证")
+                                    .fontWeight(.medium)
+                            }
+                        }
+                        .tint(.blue)
+                        .padding(.vertical, 8)
+                    }
+                } footer: {
+                    Text("开启后，打开App时会进行验证")
+                }
+
                 
                 Section {
                     HStack {
@@ -75,7 +99,11 @@ struct SettingView: View {
                         SettingRowView(imageString: "ellipsis.message.fill", linkTitle: "意见反馈")
                     }
 
-                    SettingRowView(imageString: "star.fill", linkTitle: "去评分")
+                    Button {
+                        
+                    } label: {
+                        SettingRowView(imageString: "star.fill", linkTitle: "去评分")
+                    }
                     
                 } header: {
                     Text("其它")
@@ -106,6 +134,6 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(isToggle: .constant(true))
     }
 }

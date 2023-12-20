@@ -19,6 +19,7 @@
 		8778FEE72B3183BC00B9C08C /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 8778FEE62B3183BC00B9C08C /* BetterSafariView */; };
 		8778FEEA2B31A48700B9C08C /* AboutMeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEE92B31A48700B9C08C /* AboutMeSheetView.swift */; };
 		8778FEEE2B31A4C000B9C08C /* DesignSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778FEED2B31A4C000B9C08C /* DesignSheetView.swift */; };
+		8798C9E42B32BD8600186A8C /* LockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8798C9E32B32BD8600186A8C /* LockedView.swift */; };
 		879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70142B2D97DD005F5CB7 /* ListData.swift */; };
 		879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70162B2DE08B005F5CB7 /* ListRowView.swift */; };
 		879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */; };
@@ -37,6 +38,7 @@
 		8778FEE32B316F2E00B9C08C /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
 		8778FEE92B31A48700B9C08C /* AboutMeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeSheetView.swift; sourceTree = "<group>"; };
 		8778FEED2B31A4C000B9C08C /* DesignSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSheetView.swift; sourceTree = "<group>"; };
+		8798C9E32B32BD8600186A8C /* LockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedView.swift; sourceTree = "<group>"; };
 		879C70142B2D97DD005F5CB7 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
 		879C70162B2DE08B005F5CB7 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheetView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				87680E242B2D94DC00CF30F7 /* ListView.swift */,
 				8778FEE12B316CEE00B9C08C /* SettingView.swift */,
+				8798C9E32B32BD8600186A8C /* LockedView.swift */,
 				8778FEDF2B3077DB00B9C08C /* ListDetailView.swift */,
 				8778FEE82B31A03D00B9C08C /* SheetViews */,
 			);
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8798C9E42B32BD8600186A8C /* LockedView.swift in Sources */,
 				879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */,
 				87680E162B2D93D200CF30F7 /* TodoApp.swift in Sources */,
 				87680E252B2D94DC00CF30F7 /* ListView.swift in Sources */,
@@ -351,6 +355,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "解锁应用";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -381,6 +386,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "解锁应用";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
