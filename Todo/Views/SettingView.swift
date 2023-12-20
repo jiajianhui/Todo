@@ -97,7 +97,7 @@ struct SettingView: View {
                 
                 Section {
                     Button {
-                        
+                        shareApp()
                     } label: {
                         SettingRowView(imageString: "square.and.arrow.up.fill", linkTitle: "分享产品")
                     }
@@ -110,7 +110,6 @@ struct SettingView: View {
                     
                     Button {
                         showPrivacy.toggle()
-                        
                     } label: {
                         SettingRowView(imageString: "hand.raised.slash.fill", linkTitle: "隐私政策")
                     }
@@ -149,6 +148,24 @@ struct SettingView: View {
             }
         }
     }
+    
+    //分享app函数
+    private func shareApp() {
+        
+        if let appURL = URL(string: "https://apps.apple.com/"), // 替换为你的 App Store 链接
+           let appName = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+            let items: [Any] = ["Check out \(appName) on the App Store: \(appURL)"]
+            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootVC = windowScene.windows.first?.rootViewController {
+                activityVC.popoverPresentationController?.sourceView = rootVC.view
+                rootVC.present(activityVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
 }
 
 struct SettingView_Previews: PreviewProvider {
