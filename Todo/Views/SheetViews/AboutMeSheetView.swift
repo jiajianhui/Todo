@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct AboutMeSheetView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        Text("me")
+        NavigationView {
+            ScrollView {
+                Text("develeper")
+                    .padding(.horizontal, 12)
+                    .padding(.top, 4)
+            }
+            .navigationTitle("关于开发者")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    XmarkView(dismiss: _dismiss)
+                }
+            }
+        }
     }
 }
 

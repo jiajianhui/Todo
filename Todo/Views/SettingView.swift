@@ -12,11 +12,15 @@ struct SettingView: View {
     
     @State var showSafari = false
     
+    //各种sheet
     @State var showDesignSheet = false
     @State var showAboutMeSheet = false
+    @State var showPrivacy = false
     
     //与父级的isToggle相绑定
     @Binding var isToggle: Bool
+    
+    
     
     var body: some View {
         NavigationView {
@@ -52,7 +56,7 @@ struct SettingView: View {
                                     .scaledToFit()
                                     .frame(width: 18, height: 18)
                                     .opacity(0.3)
-                                Text("FaceID验证")
+                                Text("开启面容ID验证")
                                     .fontWeight(.medium)
                             }
                         }
@@ -65,38 +69,53 @@ struct SettingView: View {
 
                 
                 Section {
-                    HStack {
-                        Image("chatGPT")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .cornerRadius(10)
-                        Text("ChatGPT")
-                            .fontWeight(.medium)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .opacity(0.3)
+                    Button {
+                        showSafari.toggle()
+                    } label: {
+                        HStack {
+                            Image("chatGPT")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 36, height: 36)
+                                .cornerRadius(10)
+                            Text("ChatGPT")
+                                .fontWeight(.medium)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .opacity(0.3)
+                        }
+                        .padding(.vertical, 4)
+                        .foregroundColor(.primary)
                     }
-                    .padding(.vertical, 8)
-                    .foregroundColor(.primary)
+                    .safariView(isPresented: $showSafari) {
+                        SafariView(url: URL(string: "https://apple.com.cn")!)
+                    }
+
                 } header: {
                     Text("致谢")
                 }
                 
                 Section {
                     Button {
-                        showSafari.toggle()
+                        
                     } label: {
-                        SettingRowView(imageString: "hand.raised.slash.fill", linkTitle: "隐私协议")
-                    }
-                    .safariView(isPresented: $showSafari) {
-                        SafariView(url: URL(string: "https://apple.com.cn")!)
+                        SettingRowView(imageString: "square.and.arrow.up.fill", linkTitle: "分享产品")
                     }
 
                     Button {
                         emailFeedBack()
                     } label: {
-                        SettingRowView(imageString: "ellipsis.message.fill", linkTitle: "意见反馈")
+                        SettingRowView(imageString: "ellipsis.message.fill", linkTitle: "产品反馈")
+                    }
+                    
+                    Button {
+                        showPrivacy.toggle()
+                        
+                    } label: {
+                        SettingRowView(imageString: "hand.raised.slash.fill", linkTitle: "隐私政策")
+                    }
+                    .sheet(isPresented: $showPrivacy) {
+                        PrivacySheetView()
                     }
 
                     Button {
