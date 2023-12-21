@@ -12,8 +12,15 @@ struct SettingView: View {
     
     @State var showSafari = false
     
+    //各种sheet
     @State var showDesignSheet = false
     @State var showAboutMeSheet = false
+    @State var showPrivacy = false
+    
+    //与父级的isToggle相绑定
+    @Binding var isToggle: Bool
+    
+    
     
     var body: some View {
         NavigationView {
@@ -42,40 +49,79 @@ struct SettingView: View {
                 
                 Section {
                     HStack {
-                        Image("chatGPT")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .cornerRadius(10)
-                        Text("ChatGPT")
-                            .fontWeight(.medium)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .opacity(0.3)
+                        Toggle(isOn: $isToggle) {
+                            HStack {
+                                Image(systemName: "key.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .opacity(0.3)
+                                Text("开启面容ID验证")
+                                    .fontWeight(.medium)
+                            }
+                        }
+                        .tint(.blue)
+                        .padding(.vertical, 8)
                     }
-                    .padding(.vertical, 8)
-                    .foregroundColor(.primary)
+                } footer: {
+                    Text("开启后，打开App时会进行验证")
+                }
+
+                
+                Section {
+                    Button {
+                        showSafari.toggle()
+                    } label: {
+                        HStack {
+                            Image("chatGPT")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 36, height: 36)
+                                .cornerRadius(10)
+                            Text("ChatGPT")
+                                .fontWeight(.medium)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .opacity(0.3)
+                        }
+                        .padding(.vertical, 4)
+                        .foregroundColor(.primary)
+                    }
+                    .safariView(isPresented: $showSafari) {
+                        SafariView(url: URL(string: "https://apple.com.cn")!)
+                    }
+
                 } header: {
                     Text("致谢")
                 }
                 
                 Section {
                     Button {
-                        showSafari.toggle()
+                        shareApp()
                     } label: {
-                        SettingRowView(imageString: "hand.raised.slash.fill", linkTitle: "隐私协议")
-                    }
-                    .safariView(isPresented: $showSafari) {
-                        SafariView(url: URL(string: "https://apple.com.cn")!)
+                        SettingRowView(imageString: "square.and.arrow.up.fill", linkTitle: "分享产品")
                     }
 
                     Button {
                         emailFeedBack()
                     } label: {
-                        SettingRowView(imageString: "ellipsis.message.fill", linkTitle: "意见反馈")
+                        SettingRowView(imageString: "ellipsis.message.fill", linkTitle: "产品反馈")
+                    }
+                    
+                    Button {
+                        showPrivacy.toggle()
+                    } label: {
+                        SettingRowView(imageString: "hand.raised.slash.fill", linkTitle: "隐私政策")
+                    }
+                    .sheet(isPresented: $showPrivacy) {
+                        PrivacySheetView()
                     }
 
-                    SettingRowView(imageString: "star.fill", linkTitle: "去评分")
+                    Button {
+                        
+                    } label: {
+                        SettingRowView(imageString: "star.fill", linkTitle: "去评分")
+                    }
                     
                 } header: {
                     Text("其它")
@@ -102,10 +148,28 @@ struct SettingView: View {
             }
         }
     }
+    
+    //分享app函数
+    private func shareApp() {
+        
+        if let appURL = URL(string: "https://apps.apple.com/"), // 替换为你的 App Store 链接
+           let appName = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+            let items: [Any] = ["Check out \(appName) on the App Store: \(appURL)"]
+            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootVC = windowScene.windows.first?.rootViewController {
+                activityVC.popoverPresentationController?.sourceView = rootVC.view
+                rootVC.present(activityVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(isToggle: .constant(true))
     }
 }
