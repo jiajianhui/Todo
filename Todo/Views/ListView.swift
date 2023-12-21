@@ -49,7 +49,7 @@ struct ListView: View {
                 } else if pickerValue == "收藏" && filterLists.filter{$0.collected}.isEmpty {
                     NoListView(title: "暂无收藏内容", image: "star")
                 } else {
-                    NoListView(title: "赶快添加你的第一个想法", image: "wand.and.stars")
+                    NoListView(title: "赶快添加你的第一个想法", image: "bubbles.and.sparkles")
                 }
             }
             .navigationTitle("灵感列表")

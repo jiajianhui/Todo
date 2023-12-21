@@ -28,6 +28,6 @@ struct NoListView: View {
 
 struct NoListView_Previews: PreviewProvider {
     static var previews: some View {
-        NoListView(title: "赶快添加你的第一个想法", image: "wand.and.stars")
+        NoListView(title: "赶快添加你的第一个想法", image: "bubbles.and.sparkles")
     }
 }

@@ -23,15 +23,15 @@ struct AddTodoSheetView: View {
                 VStack(spacing: 14) {
                     TextField("请输入标题...", text: $textFieldValue)
                         .padding()
-                        .background(Color(uiColor: .systemGray6).cornerRadius(12))
+                        .background(Color(uiColor: .systemGray5).opacity(0.6).cornerRadius(12))
                     TextEditor(text: $textEditorValue)
                         .scrollContentBackground(.hidden)
                         .padding()
                         .frame(minHeight: 500)
-                        .background(Color(uiColor: .systemGray6).cornerRadius(12))
+                        .background(Color(uiColor: .systemGray5).opacity(0.6).cornerRadius(12))
                 }
             }
-            .navigationTitle("添加待办事项")
+            .navigationTitle("添加灵感")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
