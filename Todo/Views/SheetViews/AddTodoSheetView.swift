@@ -20,16 +20,27 @@ struct AddTodoSheetView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 14) {
-                    TextField("请输入标题...", text: $textFieldValue)
-                        .padding()
-                        .background(Color(uiColor: .systemGray5).opacity(0.6).cornerRadius(12))
-                    TextEditor(text: $textEditorValue)
-                        .scrollContentBackground(.hidden)
-                        .padding()
-                        .frame(minHeight: 500)
-                        .background(Color(uiColor: .systemGray5).opacity(0.6).cornerRadius(12))
+                VStack(spacing: 24) {
+                    VStack(alignment: .leading) {
+                        Text("主题名称")
+                            .foregroundColor(.primary.opacity(0.4))
+                            .padding(.horizontal, 12)
+                        TextField("请输入标题...", text: $textFieldValue)
+                            .padding()
+                            .background(Color.white.cornerRadius(16))
+                    }
+                    VStack(alignment: .leading) {
+                        Text("主题描述")
+                            .foregroundColor(.primary.opacity(0.4))
+                            .padding(.horizontal, 12)
+                        TextEditor(text: $textEditorValue)
+                            .scrollContentBackground(.hidden)
+                            .padding()
+                            .frame(minHeight: 500)
+                            .background(Color.white.cornerRadius(16))
+                    }
                 }
+                .padding(.vertical)
             }
             .navigationTitle("添加灵感")
             .navigationBarTitleDisplayMode(.inline)
@@ -49,6 +60,9 @@ struct AddTodoSheetView: View {
                 }
             }
             .padding(.horizontal)
+            .background {
+                Color(uiColor: .systemGray6).ignoresSafeArea()
+            }
             
         }
     }

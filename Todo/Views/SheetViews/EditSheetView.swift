@@ -21,16 +21,27 @@ struct EditSheetView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 14) {
-                    TextField("请输入标题...", text: $listItem.title)
-                        .padding()
-                        .background(Color(uiColor: .systemGray5).opacity(0.6).cornerRadius(12))
-                    TextEditor(text: $listItem.content)
-                        .scrollContentBackground(.hidden)
-                        .padding()
-                        .frame(minHeight: 500)
-                        .background(Color(uiColor: .systemGray5).opacity(0.6).cornerRadius(12))
+                VStack(spacing: 24) {
+                    VStack(alignment: .leading) {
+                        Text("主题名称")
+                            .foregroundColor(.primary.opacity(0.4))
+                            .padding(.horizontal, 12)
+                        TextField("请输入标题...", text: $listItem.title)
+                            .padding()
+                            .background(Color.white.cornerRadius(16))
+                    }
+                    VStack(alignment: .leading) {
+                        Text("主题描述")
+                            .foregroundColor(.primary.opacity(0.4))
+                            .padding(.horizontal, 12)
+                        TextEditor(text: $listItem.content)
+                            .scrollContentBackground(.hidden)
+                            .padding()
+                            .frame(minHeight: 500)
+                            .background(Color.white.cornerRadius(16))
+                    }
                 }
+                .padding(.vertical)
             }
             .navigationTitle("编辑")
             .navigationBarTitleDisplayMode(.inline)
@@ -54,6 +65,9 @@ struct EditSheetView: View {
                 print("数据已修改")
             })
             .padding(.horizontal)
+            .background {
+                Color(uiColor: .systemGray6).ignoresSafeArea()
+            }
             .onAppear {
                 print(listItem)
                 if let index = listData.lists.firstIndex(of: listItem) {
@@ -83,8 +97,9 @@ struct EditSheetView: View {
     
 }
 
-//struct EditSheetView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditSheetView(listItem: .constant(ListItem(id: UUID(), title: "hello", content: "world")))
-//    }
-//}
+struct EditSheetView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditSheetView(listItem: .constant(ListItem(id: UUID(), title: "hello", content: "world")))
+            .environmentObject(ListData())
+    }
+}
