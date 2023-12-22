@@ -27,7 +27,7 @@ struct EditSheetView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     VStack(alignment: .leading) {
                         Text("主题名称")
@@ -37,6 +37,7 @@ struct EditSheetView: View {
                             .padding()
                             .background(Color.white.cornerRadius(16))
                             .focused($focused, equals: .textField1)
+                            .submitLabel(.done)  //自定义键盘上提交按钮的文案
                     }
                     VStack(alignment: .leading) {
                         Text("主题描述")
