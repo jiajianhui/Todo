@@ -14,6 +14,9 @@ struct TodoApp: App {
     @AppStorage("isToggle") var isToggle: Bool = false  //将该变量存储起来
     @State var locked: Bool = true
     
+    let listData = ListData()
+    
+    
     var body: some Scene {
         WindowGroup {
             Group {
@@ -22,6 +25,7 @@ struct TodoApp: App {
                 } else {
                     TabView {
                         ListView()
+                            .environmentObject(listData)
                             .tabItem {
                                 Image(systemName: "bubbles.and.sparkles")
                                 Text("灵感")

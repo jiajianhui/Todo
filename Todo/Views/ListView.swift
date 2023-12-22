@@ -10,7 +10,7 @@ import SwiftUI
 struct ListView: View {
     
     //初始化数据源
-    @StateObject var listData = ListData()
+    @EnvironmentObject var listData: ListData
     
     @State var showSheet = false
     

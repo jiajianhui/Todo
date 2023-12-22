@@ -24,6 +24,7 @@
 		879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70142B2D97DD005F5CB7 /* ListData.swift */; };
 		879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70162B2DE08B005F5CB7 /* ListRowView.swift */; };
 		879C70192B2DE2B7005F5CB7 /* AddTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */; };
+		87A547152B34845B00DD7669 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A547142B34845B00DD7669 /* EditSheetView.swift */; };
 		87A8F9D22B32F0B80053CF28 /* XmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8F9D12B32F0B80053CF28 /* XmarkView.swift */; };
 		87A8F9D62B32F1930053CF28 /* HandleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8F9D52B32F1930053CF28 /* HandleBarView.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		879C70142B2D97DD005F5CB7 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
 		879C70162B2DE08B005F5CB7 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheetView.swift; sourceTree = "<group>"; };
+		87A547142B34845B00DD7669 /* EditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetView.swift; sourceTree = "<group>"; };
 		87A8F9D12B32F0B80053CF28 /* XmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmarkView.swift; sourceTree = "<group>"; };
 		87A8F9D52B32F1930053CF28 /* HandleBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				879C70182B2DE2B7005F5CB7 /* AddTodoSheetView.swift */,
+				87A547142B34845B00DD7669 /* EditSheetView.swift */,
 				8778FEE92B31A48700B9C08C /* AboutMeSheetView.swift */,
 				8778FEED2B31A4C000B9C08C /* DesignSheetView.swift */,
 				873CC6862B32D7DC00FCC7EB /* PrivacySheetView.swift */,
@@ -229,6 +232,7 @@
 				87A8F9D22B32F0B80053CF28 /* XmarkView.swift in Sources */,
 				8778FEEE2B31A4C000B9C08C /* DesignSheetView.swift in Sources */,
 				879C70152B2D97DD005F5CB7 /* ListData.swift in Sources */,
+				87A547152B34845B00DD7669 /* EditSheetView.swift in Sources */,
 				87A8F9D62B32F1930053CF28 /* HandleBarView.swift in Sources */,
 				873CC6872B32D7DC00FCC7EB /* PrivacySheetView.swift in Sources */,
 				879C70172B2DE08B005F5CB7 /* ListRowView.swift in Sources */,
