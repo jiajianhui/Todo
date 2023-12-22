@@ -13,7 +13,7 @@ struct ListDetailView: View {
     
     @Binding var listItem: ListItem
     
-    @State var showActionSheet = false
+    @State var showAlert = false
     @State var showEditSheet = false
     
     @Environment(\.presentationMode) var presentationMode
@@ -46,23 +46,21 @@ struct ListDetailView: View {
                 }
                 
                 Button(role: .destructive) {
-                    showActionSheet.toggle()
+                    showAlert.toggle()
                 } label: {
                     Text("删除")
                 }
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
-            .actionSheet(isPresented: $showActionSheet) {
-                ActionSheet(
-                    title: Text("确定删除吗？此操作无法撤销"),
-                    buttons: [
-                        .destructive(Text("删除"), action: {
-                            delete()
-                        }),
-                        .cancel(Text("取消"))
-                    ]
-                )
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("确定删除吗？"),
+                    message: Text("此操作无法撤销"),
+                    primaryButton: .destructive(Text("确定"), action: {
+                        delete()
+                    }),
+                    secondaryButton: .cancel(Text("取消")))
             }
         }
         

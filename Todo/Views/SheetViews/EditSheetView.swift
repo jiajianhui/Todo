@@ -18,6 +18,13 @@ struct EditSheetView: View {
     
     @State private var index = 0
     
+    //键盘
+    enum Field {
+        case textField1
+        case textField2
+    }
+    @FocusState private var focused: Field?
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -29,6 +36,7 @@ struct EditSheetView: View {
                         TextField("请输入标题...", text: $listItem.title)
                             .padding()
                             .background(Color.white.cornerRadius(16))
+                            .focused($focused, equals: .textField1)
                     }
                     VStack(alignment: .leading) {
                         Text("主题描述")
@@ -73,6 +81,11 @@ struct EditSheetView: View {
                 if let index = listData.lists.firstIndex(of: listItem) {
                     self.index = index
                 }
+            }
+            //自动唤起键盘
+            .onAppear {
+                focused = .textField1
+                UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
             }
         }
     }

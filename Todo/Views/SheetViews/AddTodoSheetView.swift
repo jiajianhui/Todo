@@ -17,6 +17,13 @@ struct AddTodoSheetView: View {
     //关闭弹窗
     @Environment(\.dismiss) private var dismiss
     
+    //键盘
+    enum Field {
+        case textField1
+        case textField2
+    }
+    @FocusState private var focused: Field?
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -28,6 +35,7 @@ struct AddTodoSheetView: View {
                         TextField("请输入标题...", text: $textFieldValue)
                             .padding()
                             .background(Color.white.cornerRadius(16))
+                            .focused($focused, equals: .textField1)
                     }
                     VStack(alignment: .leading) {
                         Text("主题描述")
@@ -62,6 +70,12 @@ struct AddTodoSheetView: View {
             .padding(.horizontal)
             .background {
                 Color(uiColor: .systemGray6).ignoresSafeArea()
+            }
+            
+            //自动唤起键盘
+            .onAppear {
+                focused = .textField1
+                UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
             }
             
         }

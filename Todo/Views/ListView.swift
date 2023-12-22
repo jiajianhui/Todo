@@ -93,13 +93,13 @@ struct ListView: View {
     }
     
     //删除函数
-    func delete(at index: Int) {
+    func delete(at index: Range<Array<ListItem>.Index>.Element) {
         listData.lists.remove(at: index)
         listData.saveList()
     }
     
     //收藏函数
-    func collect(at index: Int) {
+    func collect(at index: Range<Array<ListItem>.Index>.Element) {
         listData.lists[index].collected.toggle()
         listData.saveList()
     }
