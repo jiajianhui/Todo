@@ -23,13 +23,14 @@ struct ListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            ScrollView {
                 if !filterLists.isEmpty {
-                    List {
+                    LazyVStack(spacing: 12) {
                         ForEach(filterLists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
                             
                             NavigationLink {
                                 ListDetailView(listItem: $filterLists[index])
+                                
                             } label: {
                                 ListRowView(listItem: filterLists[index])
                                     .swipeActions(allowsFullSwipe: true) {
@@ -42,10 +43,14 @@ struct ListView: View {
                                         }
                                         .tint(.orange)
                                     }
+                                    
                             }
+                            
+                            .listRowSeparator(.hidden)  //隐藏分割线
                         }
                     }
-                    .listStyle(.plain)
+                    .foregroundColor(.primary)
+                    .padding(.horizontal, 16)
                 } else if pickerValue == "收藏" && filterLists.filter{$0.collected}.isEmpty {
                     NoListView(title: "暂无收藏内容", image: "star")
                 } else {
@@ -81,6 +86,10 @@ struct ListView: View {
             .sheet(isPresented: $showSheet) {
                 AddTodoSheetView()
             }
+            .background {
+                Color(uiColor: .systemGray6).ignoresSafeArea()
+            }
+            
         }
         
         //初次启动时数据更新

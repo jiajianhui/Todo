@@ -20,19 +20,41 @@ struct ListRowView: View {
                 .foregroundColor(.secondary)
         }
         .lineLimit(1)
+        .padding()
+        .padding(.vertical, 8)
+        .padding(.bottom, 20)
+        
         .frame(maxWidth: .infinity, alignment: .leading)
-        .overlay(alignment: .trailing) {
-            Image(systemName: "star.fill")
-                .foregroundColor(.orange)
-                .opacity(listItem.collected ? 1 : 0)
-        }
+        .background{Color.white}
+        .overlay(alignment: .bottom, content: {
+            HStack {
+                HStack(spacing: 4) {
+                    Image(systemName: "calendar")
+                    Text("2023")
+                }
+                .foregroundColor(.primary.opacity(0.5))
+                .fontWeight(.medium)
+                Spacer()
+                Image(systemName: "star.fill")
+                    .foregroundColor(.orange)
+                    .opacity(listItem.collected ? 1 : 0)
+            }
+            .font(.system(size: 14))
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .background {
+                Color(uiColor: .systemGray).opacity(0.06)
+            }
+        })
+        .cornerRadius(12)
+        .shadow(color: Color(uiColor: .systemGray3), radius: 0.6, x: 0, y: 0)
     }
 }
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
         ListRowView(
-            listItem: ListItem(id: UUID(), title: "title", content: "content")
+            listItem: ListItem(id: UUID(), title: "title", content: "content", collected: true)
         )
     }
 }
