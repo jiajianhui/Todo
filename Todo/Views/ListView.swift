@@ -79,14 +79,15 @@ struct ListView: View {
                 }
             }
             .sheet(isPresented: $showSheet) {
-                AddTodoSheetView(listData: listData)
+                AddTodoSheetView()
             }
         }
         
-        //及时的数据更新
+        //初次启动时数据更新
         .onAppear {
             updateLists()
         }
+        //及时的数据更新
         .onChange(of: listData.lists) { _ in
             updateLists()
         }

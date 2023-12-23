@@ -12,7 +12,7 @@ struct AddTodoSheetView: View {
     @State var textFieldValue = ""
     @State var textEditorValue = ""
     
-    var listData: ListData
+    @EnvironmentObject var listData: ListData
     
     //关闭弹窗
     @Environment(\.dismiss) private var dismiss
@@ -109,11 +109,10 @@ struct AddTodoSheetView: View {
         dismiss()
     }
     
-    //
 }
 
 struct AddTodoSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTodoSheetView(listData: ListData())
+        AddTodoSheetView()
     }
 }
