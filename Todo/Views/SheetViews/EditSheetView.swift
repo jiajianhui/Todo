@@ -18,6 +18,9 @@ struct EditSheetView: View {
     
     @State private var index = 0
     
+    //alert
+    @State private var showAlert = false
+    
     //键盘
     enum Field {
         case textField1
@@ -57,13 +60,19 @@ struct EditSheetView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("取消") {
+                        listItem = listData.lists[index]  //即使编辑后，取消后，数据仍保持原样
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        edit()
-                        dismiss()
+                        if listItem.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            focused = nil  //关闭键盘
+                            showAlert.toggle()
+                        } else {
+                            edit()
+                            dismiss()
+                        }
                     } label: {
                         Text("完成")
                             .fontWeight(.medium)
@@ -71,12 +80,13 @@ struct EditSheetView: View {
                 }
             }
             .onChange(of: listData.lists, perform: { _ in
-                print("数据已修改")
+                print("数据已修改")  //debug
             })
             .padding(.horizontal)
             .background {
                 Color(uiColor: .systemGray6).ignoresSafeArea()
             }
+            //记录原始数据的索引
             .onAppear {
                 print(listItem)
                 if let index = listData.lists.firstIndex(of: listItem) {
@@ -86,7 +96,10 @@ struct EditSheetView: View {
             //自动唤起键盘
             .onAppear {
                 focused = .textField1
-                UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+            }
+            //alert
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("主题名称不能为空"), dismissButton: .default(Text("我知道了")))
             }
         }
     }

@@ -24,6 +24,10 @@ struct AddTodoSheetView: View {
     }
     @FocusState private var focused: Field?
     
+    //alert
+    @State private var showAlert = false
+    
+    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
@@ -61,7 +65,13 @@ struct AddTodoSheetView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        addTodo()
+                        //trimmingCharacters方法会删除字符串开头和结尾的空格和换行符，以此来判断输入框是否为空或是空格
+                        if textFieldValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            focused = nil  //关闭键盘
+                            showAlert.toggle()
+                        } else {
+                            addTodo()
+                        }
                     } label: {
                         Text("添加")
                             .fontWeight(.medium)
@@ -76,7 +86,10 @@ struct AddTodoSheetView: View {
             //自动唤起键盘
             .onAppear {
                 focused = .textField1
-                UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+            }
+            //判断主题名称是否为空
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("主题名称不能为空"), dismissButton: .default(Text("我知道了")))
             }
             
         }
@@ -95,6 +108,8 @@ struct AddTodoSheetView: View {
         listData.saveList()
         dismiss()
     }
+    
+    //
 }
 
 struct AddTodoSheetView_Previews: PreviewProvider {
