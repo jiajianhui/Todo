@@ -102,7 +102,8 @@ struct AddTodoSheetView: View {
         let newTodo = ListItem(
             id: id,
             title: textFieldValue,
-            content: textEditorValue
+            content: textEditorValue,
+            timeStamp: Date()
         )
         listData.lists.append(newTodo)
         listData.saveList()

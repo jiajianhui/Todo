@@ -15,6 +15,7 @@ struct ListItem: Identifiable, Codable, Equatable {
     var title: String
     var content: String
     var collected = false
+    var timeStamp: Date
 }
 
 

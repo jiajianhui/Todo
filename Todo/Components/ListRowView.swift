@@ -30,10 +30,10 @@ struct ListRowView: View {
             HStack {
                 HStack(spacing: 4) {
                     Image(systemName: "calendar")
-                    Text("2023")
+                    Text(displayDate(listItem.timeStamp))
                 }
-                .foregroundColor(.primary.opacity(0.5))
-                .fontWeight(.medium)
+                .foregroundColor(.primary.opacity(0.4))
+                
                 Spacer()
                 Image(systemName: "star.fill")
                     .foregroundColor(.orange)
@@ -49,12 +49,27 @@ struct ListRowView: View {
         .cornerRadius(12)
         .shadow(color: Color(uiColor: .systemGray3), radius: 0.6, x: 0, y: 0)
     }
+    
+    //时间格式化；dateFormatter是DateFormatter的实例对象
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        
+        formatter.locale = Locale(identifier: "zh_Hans")
+        formatter.setLocalizedDateFormatFromTemplate("HH:mm MM-dd") //自定义时间模版
+
+        return formatter
+    }()
+    
+    //将时间转为字符串
+    func displayDate(_ date: Date) -> String {
+        dateFormatter.string(from: date)
+    }
 }
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
         ListRowView(
-            listItem: ListItem(id: UUID(), title: "title", content: "content", collected: true)
+            listItem: ListItem(id: UUID(), title: "hello", content: "world", collected: true, timeStamp: Date())
         )
     }
 }

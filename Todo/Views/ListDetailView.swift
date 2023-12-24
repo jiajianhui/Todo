@@ -86,7 +86,7 @@ struct ListDetailView: View {
 struct ListDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ListDetailView(listItem: .constant(ListItem(id: UUID(), title: "hello", content: "world", collected: true)))
+            ListDetailView(listItem: .constant(ListItem(id: UUID(), title: "hello", content: "world", collected: true, timeStamp: Date())))
         }
         
     }

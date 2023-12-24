@@ -126,7 +126,7 @@ struct EditSheetView: View {
 
 struct EditSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        EditSheetView(listItem: .constant(ListItem(id: UUID(), title: "hello", content: "world")))
+        EditSheetView(listItem: .constant(ListItem(id: UUID(), title: "hello", content: "world", timeStamp: Date())))
             .environmentObject(ListData())
     }
 }
