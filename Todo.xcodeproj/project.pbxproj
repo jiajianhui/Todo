@@ -27,6 +27,7 @@
 		87A547152B34845B00DD7669 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A547142B34845B00DD7669 /* EditSheetView.swift */; };
 		87A8F9D22B32F0B80053CF28 /* XmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8F9D12B32F0B80053CF28 /* XmarkView.swift */; };
 		87A8F9D62B32F1930053CF28 /* HandleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8F9D52B32F1930053CF28 /* HandleBarView.swift */; };
+		87B1442B2B3AD239004C9085 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 87B1442A2B3AD239004C9085 /* SwipeActions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8778FEE72B3183BC00B9C08C /* BetterSafariView in Frameworks */,
+				87B1442B2B3AD239004C9085 /* SwipeActions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,7 @@
 			name = Todo;
 			packageProductDependencies = (
 				8778FEE62B3183BC00B9C08C /* BetterSafariView */,
+				87B1442A2B3AD239004C9085 /* SwipeActions */,
 			);
 			productName = Todo;
 			productReference = 87680E122B2D93D200CF30F7 /* Todo.app */;
@@ -195,6 +198,7 @@
 			mainGroup = 87680E092B2D93D100CF30F7;
 			packageReferences = (
 				8778FEE52B3183BC00B9C08C /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				87B144292B3AD239004C9085 /* XCRemoteSwiftPackageReference "SwipeActions" */,
 			);
 			productRefGroup = 87680E132B2D93D200CF30F7 /* Products */;
 			projectDirPath = "";
@@ -453,6 +457,14 @@
 				kind = branch;
 			};
 		};
+		87B144292B3AD239004C9085 /* XCRemoteSwiftPackageReference "SwipeActions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/SwipeActions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -460,6 +472,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8778FEE52B3183BC00B9C08C /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
+		};
+		87B1442A2B3AD239004C9085 /* SwipeActions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87B144292B3AD239004C9085 /* XCRemoteSwiftPackageReference "SwipeActions" */;
+			productName = SwipeActions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
