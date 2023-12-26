@@ -37,41 +37,51 @@ struct ListView: View {
                                     SwipeView {
                                         ListRowView(listItem: filterLists[index])
                                     } trailingActions: { context in
-
-                                        SwipeAction(
-                                            filterLists[index].collected ? "取消收藏" : "收藏",
-                                            backgroundColor: .orange.opacity(0.05)
-                                        ) {
-                                            context.state.wrappedValue = .closed
-                                            collect(at: index)
-                                        }
-                                        .font(.title3.weight(.bold))
-                                        .foregroundColor(.orange)
-
-                                        SwipeAction(
-                                            "删除",
-                                            backgroundColor: .red.opacity(0.05)
-                                        ) {
-                                            context.state.wrappedValue = .closed
-                                            delete(at: index)
-                                        }
-                                        .font(.title3.weight(.bold))
-                                        .foregroundColor(.red)
-                                    }
-                                    .swipeActionsMaskCornerRadius(12) //控制整个滑动按钮区域的圆角
-                                    .swipeActionCornerRadius(12)  //控制内部单个按钮的圆角
-                
-                                    
-                                    .swipeActions(allowsFullSwipe: true) {
-                                        Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
-                                            delete(at: index)
-                                        }
                                         
-                                        Button(filterLists[index].collected ? "取消收藏" : "收藏") {
-                                            collect(at: index)
+                                        SwipeAction {} label: { _ in
+                                            Button {
+                                                context.state.wrappedValue = .closed
+                                                collect(at: index)
+                                            } label: {
+                                                VStack {
+                                                    Circle()
+                                                        .foregroundColor(.orange)
+                                                        .frame(width: 46, height: 46)
+                                                        .overlay {
+                                                            Image(systemName: "star.fill")
+                                                                .foregroundColor(.white)
+                                                        }
+                                                    Text(filterLists[index].collected ? "取消收藏" : "收藏")
+                                                        .font(.system(size: 14))
+                                                }
+                                            }
+                                        } background: { _ in
+                                            Color.clear
                                         }
-                                        .tint(.orange)
+
+                                        SwipeAction {} label: { _ in
+                                            Button {
+                                                context.state.wrappedValue = .closed
+                                                delete(at: index)
+                                            } label: {
+                                                VStack {
+                                                    Circle()
+                                                        .foregroundColor(.red)
+                                                        .frame(width: 46, height: 46)
+                                                        .overlay {
+                                                            Image(systemName: "trash.fill")
+                                                                .foregroundColor(.white)
+                                                        }
+                                                    Text("删除")
+                                                        .font(.system(size: 14))
+                                                }
+                                            }
+                                        } background: { _ in
+                                            Color.clear
+                                        }
                                     }
+                                    .swipeSpacing(0)
+                                    .swipeActionWidth(80)
                                         
                                 }
                             }
