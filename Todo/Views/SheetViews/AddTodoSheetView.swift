@@ -34,6 +34,7 @@ struct AddTodoSheetView: View {
                 VStack(spacing: 24) {
                     VStack(alignment: .leading) {
                         Text("主题名称")
+                            .font(.system(size: 14))
                             .foregroundColor(.primary.opacity(0.4))
                             .padding(.horizontal, 12)
                         TextField("请输入标题...", text: $textFieldValue)
@@ -44,6 +45,7 @@ struct AddTodoSheetView: View {
                     }
                     VStack(alignment: .leading) {
                         Text("主题描述")
+                            .font(.system(size: 14))
                             .foregroundColor(.primary.opacity(0.4))
                             .padding(.horizontal, 12)
                         TextEditor(text: $textEditorValue)
