@@ -64,7 +64,7 @@ struct ListView: View {
                                         SwipeAction {} label: { _ in
                                             Button {
                                                 context.state.wrappedValue = .closed
-                                                showAlert.toggle()
+                                                delete(at: index)
                                             } label: {
                                                 VStack {
                                                     Circle()
@@ -78,19 +78,7 @@ struct ListView: View {
                                                         .font(.system(size: 14))
                                                 }
                                             }
-                                            .alert(isPresented: $showAlert) {
-                                                Alert(
-                                                    title: Text("确定要删除吗🤔"),
-                                                    primaryButton: .destructive(
-                                                        Text("删除"),
-                                                        action: {
-                                                            delete(at: index)
-                                                        }),
-                                                    secondaryButton: .cancel(
-                                                        Text("取消")
-                                                    )
-                                                )
-                                            }
+                                            
                                         } background: { _ in
                                             Color.clear
                                         }
