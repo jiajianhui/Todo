@@ -21,6 +21,8 @@ struct ListView: View {
     
     @State var filterLists: [ListItem] = []
     
+    @State var showAlert = false
+    
     
     var body: some View {
         NavigationView {
@@ -62,7 +64,7 @@ struct ListView: View {
                                         SwipeAction {} label: { _ in
                                             Button {
                                                 context.state.wrappedValue = .closed
-                                                delete(at: index)
+                                                showAlert.toggle()
                                             } label: {
                                                 VStack {
                                                     Circle()
@@ -75,6 +77,19 @@ struct ListView: View {
                                                     Text("删除")
                                                         .font(.system(size: 14))
                                                 }
+                                            }
+                                            .alert(isPresented: $showAlert) {
+                                                Alert(
+                                                    title: Text("确定要删除吗🤔"),
+                                                    primaryButton: .destructive(
+                                                        Text("删除"),
+                                                        action: {
+                                                            delete(at: index)
+                                                        }),
+                                                    secondaryButton: .cancel(
+                                                        Text("取消")
+                                                    )
+                                                )
                                             }
                                         } background: { _ in
                                             Color.clear

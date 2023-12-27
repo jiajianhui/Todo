@@ -55,8 +55,7 @@ struct ListDetailView: View {
             }
             .alert(isPresented: $showAlert) {
                 Alert(
-                    title: Text("确定删除吗？"),
-                    message: Text("此操作无法撤销"),
+                    title: Text("确定要删除吗🤔"),
                     primaryButton: .destructive(Text("确定"), action: {
                         delete()
                     }),
