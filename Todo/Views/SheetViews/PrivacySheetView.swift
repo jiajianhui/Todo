@@ -14,9 +14,15 @@ struct PrivacySheetView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                Text("我们非常在意悠的隐私，绝对不会上传您的任何图片以及任何数据，所有智能检测均在设备端离线运行。")
-                    .padding(.horizontal, 12)
-                    .padding(.top, 4)
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("🙅")
+                        .font(.system(size: 46))
+                    Text("隐私大于一切！！！")
+                    Text("我们非常在意您的隐私，绝对不会上传您的任何数据，所有数据均在设备端离线运行。")
+                }
+                .lineSpacing(7)
+                .padding(.horizontal, 16)
+                .padding(.top, 4)
             }
             .navigationTitle("隐私政策")
             .toolbar {
