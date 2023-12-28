@@ -25,7 +25,7 @@ struct ListRowView: View {
         .padding(.bottom, 20)
         
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background{Color.white}
+        .background{Color("white")}
         .overlay(alignment: .bottom, content: {
             HStack {
                 HStack(spacing: 4) {

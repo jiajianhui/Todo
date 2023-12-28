@@ -39,7 +39,7 @@ struct AddTodoSheetView: View {
                             .padding(.horizontal, 12)
                         TextField("请输入标题...", text: $textFieldValue)
                             .padding()
-                            .background(Color.white.cornerRadius(16))
+                            .background(Color("white").cornerRadius(16))
                             .focused($focused, equals: .textField1)
                             .submitLabel(.done)  //自定义键盘上提交按钮的文案
                     }
@@ -52,7 +52,7 @@ struct AddTodoSheetView: View {
                             .scrollContentBackground(.hidden)
                             .padding()
                             .frame(minHeight: 500)
-                            .background(Color.white.cornerRadius(16))
+                            .background(Color("white").cornerRadius(16))
                     }
                 }
                 .padding(.vertical)
@@ -82,7 +82,7 @@ struct AddTodoSheetView: View {
             }
             .padding(.horizontal)
             .background {
-                Color(uiColor: .systemGray6).ignoresSafeArea()
+                Color("bgColor").ignoresSafeArea()
             }
             
             //自动唤起键盘
