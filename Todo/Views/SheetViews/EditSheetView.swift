@@ -38,7 +38,7 @@ struct EditSheetView: View {
                             .padding(.horizontal, 12)
                         TextField("请输入标题...", text: $listItem.title)
                             .padding()
-                            .background(Color.white.cornerRadius(16))
+                            .background(Color("white").cornerRadius(16))
                             .focused($focused, equals: .textField1)
                             .submitLabel(.done)  //自定义键盘上提交按钮的文案
                     }
@@ -50,7 +50,7 @@ struct EditSheetView: View {
                             .scrollContentBackground(.hidden)
                             .padding()
                             .frame(minHeight: 500)
-                            .background(Color.white.cornerRadius(16))
+                            .background(Color("white").cornerRadius(16))
                     }
                 }
                 .padding(.vertical)
@@ -84,7 +84,7 @@ struct EditSheetView: View {
             })
             .padding(.horizontal)
             .background {
-                Color(uiColor: .systemGray6).ignoresSafeArea()
+                Color("bgColor").ignoresSafeArea()
             }
             //记录原始数据的索引
             .onAppear {
