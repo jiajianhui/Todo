@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwipeActions
 
 struct ListView: View {
     
@@ -21,84 +20,38 @@ struct ListView: View {
     
     @State var filterLists: [ListItem] = []
     
-    @State var showAlert = false
-    
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            VStack {
                 if !filterLists.isEmpty {
-                    SwipeViewGroup {
-                        LazyVStack(spacing: 12) {
+                        List {
+                            
                             ForEach(filterLists.indices, id: \.self) { index in  //获取集合索引的方式，它返回一个范围
                                 
                                 NavigationLink {
                                     ListDetailView(listItem: $filterLists[index])
-                                    
                                 } label: {
-                                    SwipeView {
-                                        ListRowView(listItem: filterLists[index])
-                                    } trailingActions: { context in
-                                        
-                                        SwipeAction {} label: { _ in
-                                            Button {
-                                                context.state.wrappedValue = .closed
-                                                collect(at: index)
-                                            } label: {
-                                                VStack {
-                                                    Circle()
-                                                        .foregroundColor(.orange)
-                                                        .frame(width: 46, height: 46)
-                                                        .overlay {
-                                                            Image(systemName: "star.fill")
-                                                                .foregroundColor(.white)
-                                                        }
-                                                    Text(filterLists[index].collected ? "取消收藏" : "收藏")
-                                                        .font(.system(size: 14))
-                                                }
-                                            }
-                                        } background: { _ in
-                                            Color.clear
-                                        }
-
-                                        SwipeAction {} label: { _ in
-                                            Button {
-                                                context.state.wrappedValue = .closed
+                                    ListRowView(listItem: filterLists[index])
+                                        .swipeActions(allowsFullSwipe: true) {
+                                            Button("删除", role: .destructive) {  //使用role，删除时会有过渡效果
                                                 delete(at: index)
-                                            } label: {
-                                                VStack {
-                                                    Circle()
-                                                        .foregroundColor(.red)
-                                                        .frame(width: 46, height: 46)
-                                                        .overlay {
-                                                            Image(systemName: "trash.fill")
-                                                                .foregroundColor(.white)
-                                                        }
-                                                    Text("删除")
-                                                        .font(.system(size: 14))
-                                                }
                                             }
                                             
-                                        } background: { _ in
-                                            Color.clear
+                                            Button(filterLists[index].collected ? "取消收藏" : "收藏") {
+                                                collect(at: index)
+                                            }
+                                            .tint(.orange)
                                         }
-                                    }
-                                    .swipeSpacing(0)
-                                    .swipeActionWidth(80)
-                                        
                                 }
                             }
                         }
-                        .foregroundColor(.primary)
-                    .padding(.horizontal, 16)
-                    }
                 } else if pickerValue == "收藏" && filterLists.filter{$0.collected}.isEmpty {
                     NoListView(title: "暂无收藏内容", image: "star")
                 } else {
                     NoListView(title: "赶快添加你的第一个灵感", image: "bubbles.and.sparkles")
                 }
             }
-            
             .navigationTitle("灵感列表")
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -127,9 +80,6 @@ struct ListView: View {
             }
             .sheet(isPresented: $showSheet) {
                 AddTodoSheetView()
-            }
-            .background {
-                Color("bgColor").ignoresSafeArea()
             }
             
         }

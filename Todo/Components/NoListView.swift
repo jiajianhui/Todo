@@ -23,7 +23,6 @@ struct NoListView: View {
         }
         .frame(maxWidth: .infinity)
         .foregroundColor(Color(uiColor: .systemGray4))
-        .offset(y: 200)
     }
 }
 
