@@ -374,7 +374,7 @@
 				DEVELOPMENT_TEAM = ML2CJSB2YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_CFBundleDisplayName = SparkFlow;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "解锁应用";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -405,7 +405,7 @@
 				DEVELOPMENT_TEAM = ML2CJSB2YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_CFBundleDisplayName = SparkFlow;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "解锁应用";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
