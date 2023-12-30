@@ -21,6 +21,7 @@ struct AboutMeSheetView: View {
                         .font(.system(size: 46))
                     Text("创造深植于内心，上架一款APP是我一直以来的心愿。")
                     Text("进入新的领域，学习新的知识，从来都是让我无比兴奋的事情；这一次我使用 SwiftUI 来完成这一款APP，过程充满乐趣与挑战，在经历过无数次 Build Succeeded 后，终于完成了这款APP。")
+                    Text("这次只是一个开始，未来我会带来更多好玩的产品！")
                 }
                 .lineSpacing(7)
                 .padding(.horizontal, 16)
