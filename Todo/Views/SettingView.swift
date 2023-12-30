@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import BetterSafariView
+//import BetterSafariView
 
 struct SettingView: View {
     
@@ -68,32 +68,32 @@ struct SettingView: View {
                 }
 
                 
-                Section {
-                    Button {
-                        showSafari.toggle()
-                    } label: {
-                        HStack {
-                            Image("chatGPT")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 36, height: 36)
-                                .cornerRadius(10)
-                            Text("ChatGPT")
-                                .fontWeight(.medium)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .opacity(0.3)
-                        }
-                        .padding(.vertical, 4)
-                        .foregroundColor(.primary)
-                    }
-                    .safariView(isPresented: $showSafari) {
-                        SafariView(url: URL(string: "https://apple.com.cn")!)
-                    }
-
-                } header: {
-                    Text("致谢")
-                }
+//                Section {
+//                    Button {
+//                        showSafari.toggle()
+//                    } label: {
+//                        HStack {
+//                            Image("chatGPT")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 36, height: 36)
+//                                .cornerRadius(10)
+//                            Text("ChatGPT")
+//                                .fontWeight(.medium)
+//                            Spacer()
+//                            Image(systemName: "chevron.right")
+//                                .opacity(0.3)
+//                        }
+//                        .padding(.vertical, 4)
+//                        .foregroundColor(.primary)
+//                    }
+//                    .safariView(isPresented: $showSafari) {
+//                        SafariView(url: URL(string: "https://apple.com.cn")!)
+//                    }
+//
+//                } header: {
+//                    Text("致谢")
+//                }
                 
                 Section {
                     Button {
