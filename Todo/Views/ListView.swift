@@ -99,7 +99,7 @@ struct ListView: View {
                 }
             }
             
-            .navigationTitle("灵感列表")
+            .navigationTitle("灵感列表1")
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Picker("picker", selection: $pickerValue) {
